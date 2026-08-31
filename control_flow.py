@@ -13,16 +13,27 @@ if temperature >= 30000:
 elif temperature >= 10000:
     print("Class B")
 # TODO: add elif branches for A (>=7500), F (>=6000), G (>=5200), K (>=3700)
+elif temperature >= 7500 :
+    print("Class A")
+elif temperature >= 6000 :
+    print("Class F")
+elif temperature >= 5200 :
+    print("Class G")
+elif temperature >= 3700 :
+    print("Class K")
 else:
     print("Class M")
-
+ 
 
 # Exercise 2: boolean logic -- can you see it?
 magnitude = 1.25
 naked_eye = magnitude < 6.0
 city_visible = magnitude < 3.0
 # TODO: print whether the star is visible from a city (naked_eye AND city_visible)
-
+if naked_eye and city_visible:
+    print(f"Naked eye visible: {naked_eye}, City visible: {city_visible}")
+else:
+    print("Not visible from city")
 
 # --- Part B: repeating things ----------------------------------------------
 
@@ -32,7 +43,9 @@ for distance in range(1, 11):
     year_left = 2026 - distance
     print(f"{distance} ly  ->  light left in {year_left}")
 # TODO: try range(0, 21, 5) and see what the third number does.
-
+for distance in range(0, 21, 5):
+    year_left = 2026 - distance
+    print(f"{distance} ly  ->  light left in {year_left}")
 
 # Exercise 4: a while loop
 brightness = 100.0
@@ -41,6 +54,7 @@ while brightness >= 1.0:
     brightness = brightness / 2
     steps = steps + 1
 # TODO: print how many steps it took to drop below 1.
+print(f"Steps to drop below 1: {steps}")
 
 
 # --- Part C: functions -----------------------------------------------------
@@ -52,6 +66,14 @@ def spectral_class(temperature):
     elif temperature >= 10000:
         return "B"
     # TODO: add A, F, G, K branches
+    elif temperature >= 7500 :
+        return "A"
+    elif temperature >= 6000 :
+        return "F"
+    elif temperature >= 5200 :
+        return "G"
+    elif temperature >= 3700 :
+        return "K"
     else:
         return "M"
 
@@ -70,3 +92,5 @@ print(light_left_year(8.6, 2000))   # overrides now
 # --- Optional extension ----------------------------------------------------
 # TODO: loop over temperatures 3000..40000 in steps of 1000 and print each
 #       temperature next to spectral_class(temperature).
+for temp in range(3000, 40001, 1000):
+    print(f"{temp} K -> {spectral_class(temp)}")
